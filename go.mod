@@ -1,3 +1,3 @@
-module ebiten-LDTK
+module ebitenLDTK
 
 go 1.23.4
