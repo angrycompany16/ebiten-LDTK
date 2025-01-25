@@ -1,4 +1,4 @@
-package main
+package ebitenLDTK
 
 import (
 	"encoding/json"
