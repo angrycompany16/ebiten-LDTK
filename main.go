@@ -101,6 +101,17 @@ func LoadLDTK(path string) (LDTKWorld, error) {
 	return world, nil
 }
 
+func (l *LDTKLevel) MakeBitmap(layer *LDTKLayer, layerInstance *LDTKLayerInstance) [][]int {
+	// size = width / tilesize, height / tilesize
+	numTilesX := l.PxWid / layer.GridSize
+	numTilesY := l.PxHei / layer.GridSize
+	bitmap := make([][]int, numTilesY)
+	for i := range bitmap {
+		bitmap[i] = make([]int, numTilesX)
+	}
+	return bitmap
+}
+
 // func main() {
 // 	// testLDTKJSON("../mask_of_the_tomb/assets/LDTK/test.ldtk", "defs")
 // 	world, err := LoadLDTK("../mask_of_the_tomb/assets/LDTK/test.ldtk")
