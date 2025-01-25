@@ -2,6 +2,7 @@ package ebitenLDTK
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 )
 
@@ -115,6 +116,8 @@ func (l *LDTKLevel) MakeBitmap(layer *LDTKLayer, layerInstance *LDTKLayerInstanc
 		posY := tile.Px[1] / layer.GridSize
 		bitmap[posY][posX] = 1
 	}
+
+	fmt.Println("Generating bitmap")
 
 	return bitmap
 }
