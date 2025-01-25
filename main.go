@@ -122,6 +122,10 @@ func (l *LDTKLevel) MakeBitmap(layer *LDTKLayer, layerInstance *LDTKLayerInstanc
 	return bitmap
 }
 
+func Testing() {
+
+}
+
 // func main() {
 // 	// testLDTKJSON("../mask_of_the_tomb/assets/LDTK/test.ldtk", "defs")
 // 	world, err := LoadLDTK("../mask_of_the_tomb/assets/LDTK/test.ldtk")
