@@ -101,6 +101,10 @@ func LoadLDTK(path string) (LDTKWorld, error) {
 	return world, nil
 }
 
+func Testing() {
+
+}
+
 func (l *LDTKLevel) MakeBitmap(layer *LDTKLayer, layerInstance *LDTKLayerInstance) [][]int {
 	// size = width / tilesize, height / tilesize
 	numTilesX := l.PxWid / layer.GridSize
