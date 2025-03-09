@@ -74,22 +74,30 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 		}
 		f.EntityRef = entityRefValue
 	case FieldTypeEntityRefArray:
-		entityRefValueArray := make([]EntityRefValue, 0)
-		entityRefArray, ok := result["__value"].(map[string]any)
+		entityRefArray, ok := result["__value"].([]any)
 		if !ok {
-			return errors.New("could not cast result[\"__value\"] to map[string]any")
+			return errors.New("could not cast result[\"__value\"] to []any")
 		}
 
-		JSONdata, err := json.Marshal(entityRefArray)
-		if err != nil {
-			return errors.New("could not Marshal entityRefArray")
-		}
+		for _, _entityRef := range entityRefArray {
+			var entityRefValue EntityRefValue
+			entityRef, ok := _entityRef.(map[string]any)
 
-		err = json.Unmarshal(JSONdata, &entityRefValueArray)
-		if err != nil {
-			return errors.New("could not Unmarshal entityRefValue")
+			if !ok {
+				return errors.New("could not cast entityRef to map[string]any")
+			}
+
+			JSONdata, err := json.Marshal(entityRef)
+			if err != nil {
+				return errors.New("could not Marshal entityRefArray")
+			}
+
+			err = json.Unmarshal(JSONdata, &entityRefValue)
+			if err != nil {
+				return errors.New("could not Unmarshal entityRefValue")
+			}
+			f.EntityRefArray = append(f.EntityRefArray, entityRefValue)
 		}
-		f.EntityRefArray = entityRefValueArray
 	}
 	return nil
 }
