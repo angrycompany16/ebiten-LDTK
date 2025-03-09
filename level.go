@@ -54,7 +54,7 @@ func (l *Level) GetLayerByName(name string) (Layer, error) {
 			return layer, nil
 		}
 	}
-	return Layer{}, fmt.Errorf("layer with name [%sk] was not found", name)
+	return Layer{}, fmt.Errorf("layer with name [%s] was not found", name)
 }
 
 func (l *Level) GetEntityByIid(iid string) (Entity, error) {
