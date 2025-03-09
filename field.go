@@ -11,15 +11,17 @@ import (
 type FieldType string
 
 const (
-	FieldTypeEntityRef = "EntityRef"
-	FieldTypeFloat     = "Float"
+	FieldTypeEntityRef      = "EntityRef"
+	FieldTypeEntityRefArray = "Array<EntityRef>"
+	FieldTypeFloat          = "Float"
 )
 
 type Field struct {
-	Name      string
-	Type      FieldType
-	EntityRef EntityRefValue
-	Float     float64
+	Name           string
+	Type           FieldType
+	EntityRef      EntityRefValue
+	EntityRefArray []EntityRefValue
+	Float          float64
 }
 
 type EntityRefValue struct {
@@ -71,6 +73,23 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 			return errors.New("could not Unmarshal entityRefValue")
 		}
 		f.EntityRef = entityRefValue
+	case FieldTypeEntityRefArray:
+		entityRefValueArray := make([]EntityRefValue, 0)
+		entityRefArray, ok := result["__value"].(map[string]any)
+		if !ok {
+			return errors.New("could not cast result[\"__value\"] to map[string]any")
+		}
+
+		JSONdata, err := json.Marshal(entityRefArray)
+		if err != nil {
+			return errors.New("could not Marshal entityRefArray")
+		}
+
+		err = json.Unmarshal(JSONdata, &entityRefValueArray)
+		if err != nil {
+			return errors.New("could not Unmarshal entityRefValue")
+		}
+		f.EntityRefArray = entityRefValueArray
 	}
 	return nil
 }
