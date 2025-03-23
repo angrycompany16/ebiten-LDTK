@@ -32,28 +32,21 @@ func main() {
 			continue
 		}
 
-		ignoreValue = layerDef.GetIntGridValue("walls")
+		// ignoreValue = layerDef.GetIntGridValue("walls")
 	}
 
-	var bitmap [][]int
+	var intGridCSV [][]int
 	for _, layer := range level.Layers {
 		if layer.Name != "IntGrid_with_rules" {
 			continue
 		}
 
-		bitmap = layer.ExtractLayerCSV([]int{ignoreValue})
+		intGridCSV = layer.ExtractLayerCSV([]int{ignoreValue})
 	}
 
-	var sum int
-	for _, row := range bitmap {
-		var rowSum int
-		for _, val := range row {
-			rowSum += val
-		}
-		sum += rowSum
+	for i := range intGridCSV {
+		fmt.Println(intGridCSV[i])
 	}
-
-	fmt.Println("Sum of csv entry values:", sum)
 }
 
 func testFields(entity ebitenLDTK.Entity) {

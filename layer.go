@@ -54,14 +54,14 @@ func (l *Layer) ExtractLayerCSV(ignoredIDs []int) [][]int {
 			for j := range l.Width {
 				shouldIgnore := false
 				for _, id := range ignoredIDs {
-					if l.IntGridCsv[i*l.Height+j] == id {
+					if l.IntGridCsv[i*l.Width+j] == id {
 						shouldIgnore = true
 					}
 				}
 				if shouldIgnore {
 					continue
 				}
-				bitmap[i][j] = l.IntGridCsv[i*l.Height+j]
+				bitmap[i][j] = l.IntGridCsv[i*l.Width+j]
 			}
 		}
 	} else if l.Type == LayerTypeTiles {
