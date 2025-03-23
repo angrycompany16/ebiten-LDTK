@@ -16,6 +16,7 @@ type Layer struct {
 	TilesetRelPath string    `json:"__tilesetRelPath"`
 	PxOffsetX      int       `json:"pxOffsetX"`
 	PxOffsetY      int       `json:"pxOffsetY"`
+	IntGridCsv     []int     `json:"intGridCsv"`
 	GridTiles      []Tile    `json:"gridTiles"`
 	Entities       []Entity  `json:"entityInstances"`
 	AutoLayerTiles []Tile    `json:"autoLayerTiles"`
