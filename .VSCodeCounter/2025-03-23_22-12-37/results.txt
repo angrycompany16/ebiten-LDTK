@@ -1,0 +1,42 @@
+Date : 2025-03-23 22:12:37
+Directory : /home/angrycompany16/gamedev/go/ebiten-LDTK
+Total : 12 files,  389 codes, 9 comments, 79 blanks, all 477 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Go               |          9 |        362 |          9 |         73 |        444 |
+| Go Checksum File |          1 |         14 |          0 |          1 |         15 |
+| Go Module File   |          1 |         11 |          0 |          3 |         14 |
+| Markdown         |          1 |          2 |          0 |          2 |          4 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                 | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                    |         12 |        389 |          9 |         79 |        477 |
+| . (Files)                                                            |         11 |        342 |          7 |         69 |        418 |
+| examples                                                             |          1 |         47 |          2 |         10 |         59 |
+| examples/APItest                                                     |          1 |         47 |          2 |         10 |         59 |
++----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                             | language         | code       | comment    | blank      | total      |
++----------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/README.md                | Markdown         |          2 |          0 |          2 |          4 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/defs.go                  | Go               |         41 |          3 |         10 |         54 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/entity.go                | Go               |         32 |          0 |          7 |         39 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/examples/APItest/main.go | Go               |         47 |          2 |         10 |         59 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/field.go                 | Go               |         84 |          3 |         17 |        104 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/go.mod                   | Go Module File   |         11 |          0 |          3 |         14 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/go.sum                   | Go Checksum File |         14 |          0 |          1 |         15 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/instances.go             | Go               |          1 |          0 |          1 |          2 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/layer.go                 | Go               |         35 |          0 |          7 |         42 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/level.go                 | Go               |         60 |          1 |         10 |         71 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/tileset.go               | Go               |         13 |          0 |          3 |         16 |
+| /home/angrycompany16/gamedev/go/ebiten-LDTK/world.go                 | Go               |         49 |          0 |          8 |         57 |
+| Total                                                                |                  |        389 |          9 |         79 |        477 |
++----------------------------------------------------------------------+------------------+------------+------------+------------+------------+

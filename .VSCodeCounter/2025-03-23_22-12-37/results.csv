@@ -1,0 +1,14 @@
+"filename", "language", "Go", "Go Module File", "Go Checksum File", "Markdown", "comment", "blank", "total"
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/README.md", "Markdown", 0, 0, 0, 2, 0, 2, 4
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/defs.go", "Go", 41, 0, 0, 0, 3, 10, 54
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/entity.go", "Go", 32, 0, 0, 0, 0, 7, 39
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/examples/APItest/main.go", "Go", 47, 0, 0, 0, 2, 10, 59
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/field.go", "Go", 84, 0, 0, 0, 3, 17, 104
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/go.mod", "Go Module File", 0, 11, 0, 0, 0, 3, 14
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/go.sum", "Go Checksum File", 0, 0, 14, 0, 0, 1, 15
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/instances.go", "Go", 1, 0, 0, 0, 0, 1, 2
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/layer.go", "Go", 35, 0, 0, 0, 0, 7, 42
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/level.go", "Go", 60, 0, 0, 0, 1, 10, 71
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/tileset.go", "Go", 13, 0, 0, 0, 0, 3, 16
+"/home/angrycompany16/gamedev/go/ebiten-LDTK/world.go", "Go", 49, 0, 0, 0, 0, 8, 57
+"Total", "-", 362, 11, 14, 2, 9, 79, 477

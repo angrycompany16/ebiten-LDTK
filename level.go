@@ -2,7 +2,6 @@ package ebitenLDTK
 
 import (
 	"fmt"
-	"log"
 )
 
 type Level struct {
@@ -18,35 +17,41 @@ type Level struct {
 }
 
 // TODO: use intgrid data to make the bitmap more flexible
-func (l *Level) MakeBitmapFromLayer(defs *Defs, layerName string) [][]int {
-	layer, err := l.GetLayerByName(layerName)
-	if err != nil {
-		log.Fatal(err)
-	}
+// Generate a 2D-array of ints indicating whether
+// There is no point to this...
+// Unless we just have a simple tilemap
+// func (l *Level) MakeBitmapFromLayer(layerName string, ignoreIDs []int) [][]int {
+// 	layer, err := l.GetLayerByName(layerName)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
 
-	numTilesX := int(l.PxWid / layer.GridSize)
-	numTilesY := int(l.PxHei / layer.GridSize)
-	bitmap := make([][]int, numTilesY)
-	for i := range bitmap {
-		bitmap[i] = make([]int, numTilesX)
-	}
+// 	numTilesX := int(l.PxWid / layer.GridSize)
+// 	numTilesY := int(l.PxHei / layer.GridSize)
+// 	bitmap := make([][]int, numTilesY)
+// 	for i := range bitmap {
+// 		bitmap[i] = make([]int, numTilesX)
+// 	}
 
-	if layer.Type == LayerTypeIntGrid {
-		for _, tile := range layer.AutoLayerTiles {
-			posX := tile.Px[0] / layer.GridSize
-			posY := tile.Px[1] / layer.GridSize
-			bitmap[int(posY)][int(posX)] = 1
-		}
-	} else if layer.Type == LayerTypeTiles {
-		for _, tile := range layer.AutoLayerTiles {
-			posX := tile.Px[0] / layer.GridSize
-			posY := tile.Px[1] / layer.GridSize
-			bitmap[int(posY)][int(posX)] = 1
-		}
-	}
+// 	if layer.Type == LayerTypeIntGrid {
+// 		// make 2D array from 1D array
+// 		for i := range
+// 		return layer.IntGridCsv
+// 		// for _, tile := range layer.IntGridCsv {
+// 		// 	posX := tile.Px[0] / layer.GridSize
+// 		// 	posY := tile.Px[1] / layer.GridSize
+// 		// 	bitmap[int(posY)][int(posX)] = 1
+// 		// }
+// 	} else if layer.Type == LayerTypeTiles {
+// 		for _, tile := range layer.AutoLayerTiles {
+// 			posX := tile.Px[0] / layer.GridSize
+// 			posY := tile.Px[1] / layer.GridSize
+// 			bitmap[int(posY)][int(posX)] = 1
+// 		}
+// 	}
 
-	return bitmap
-}
+// 	return bitmap
+// }
 
 func (l *Level) GetLayerByName(name string) (Layer, error) {
 	for _, layer := range l.Layers {
