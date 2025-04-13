@@ -6,6 +6,7 @@ package ebitenLDTK
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 )
 
 type FieldType string
@@ -14,6 +15,7 @@ const (
 	FieldTypeEntityRef      = "EntityRef"
 	FieldTypeEntityRefArray = "Array<EntityRef>"
 	FieldTypeFloat          = "Float"
+	FieldTypeBiome          = "LocalEnum.Biome"
 )
 
 type Field struct {
@@ -22,6 +24,7 @@ type Field struct {
 	EntityRef      EntityRefValue
 	EntityRefArray []EntityRefValue
 	Float          float64
+	Biome          string
 }
 
 type EntityRefValue struct {
@@ -33,7 +36,6 @@ type EntityRefValue struct {
 func (f *Field) UnmarshalJSON(data []byte) error {
 	var result map[string]any
 	err := json.Unmarshal(data, &result)
-
 	if err != nil {
 		return err
 	}
@@ -97,6 +99,14 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 				return errors.New("could not Unmarshal entityRefValue")
 			}
 			f.EntityRefArray = append(f.EntityRefArray, entityRefValue)
+		}
+	case FieldTypeBiome:
+		if result["__value"] == nil {
+			f.Biome = ""
+			fmt.Println("Assigning empty biome to level with missing biome field")
+		} else {
+			biome := result["__value"].(string)
+			f.Biome = biome
 		}
 	}
 	return nil

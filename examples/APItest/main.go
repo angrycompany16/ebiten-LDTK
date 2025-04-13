@@ -20,7 +20,7 @@ func main() {
 	for _, layer := range level.Layers {
 		for _, entity := range layer.Entities {
 			if entity.Name == "EntityRefArrayTest" {
-				testFields(entity)
+				testFields(entity, level)
 			}
 		}
 	}
@@ -32,7 +32,7 @@ func main() {
 			continue
 		}
 
-		// ignoreValue = layerDef.GetIntGridValue("walls")
+		ignoreValue = layerDef.GetIntGridValue("walls")
 	}
 
 	var intGridCSV [][]int
@@ -49,23 +49,18 @@ func main() {
 	}
 }
 
-func testFields(entity ebitenLDTK.Entity) {
-	field, err := entity.GetFieldByName("Entity_refs")
+func testFields(entity ebitenLDTK.Entity, level ebitenLDTK.Level) {
+	entityField, err := entity.GetFieldByName("Entity_refs")
 	if err != nil {
 		panic(err)
 	}
-	for _, entityRef := range field.EntityRefArray {
+	for _, entityRef := range entityField.EntityRefArray {
 		fmt.Printf("I am entity %s, this is my friend entity %s\n", entity.Iid, entityRef.EntityIid)
 	}
-}
 
-func getIntGridValueIdentifier(value int, world ebitenLDTK.World) string {
-	for _, layerDef := range world.Defs.LayerDefs {
-		for _, intGridValue := range layerDef.IntGridValues {
-			if intGridValue.Value == value {
-				return intGridValue.Identifier
-			}
-		}
+	levelField, err := level.GetFieldByName("Biome")
+	if err != nil {
+		panic(err)
 	}
-	return ""
+	fmt.Println("This level is in biome", levelField.Biome)
 }
