@@ -13,6 +13,7 @@ type Level struct {
 	WorldDepth int     `json:"worldDepth"`
 	PxWid      float64 `json:"pxWid"`
 	PxHei      float64 `json:"pxHei"`
+	BgColorHex string  `json:"__bgColor"`
 	Layers     []Layer `json:"layerInstances"`
 	Fields     []Field `json:"fieldInstances"`
 }
