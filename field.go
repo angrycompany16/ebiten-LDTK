@@ -16,6 +16,7 @@ const (
 	FieldTypeEntityRefArray = "Array<EntityRef>"
 	FieldTypeFloat          = "Float"
 	FieldTypeBiome          = "LocalEnum.Biome"
+	FieldTypePoint          = "Point"
 )
 
 type Field struct {
@@ -25,11 +26,16 @@ type Field struct {
 	EntityRefArray []EntityRefValue
 	Float          float64
 	Biome          string
+	Point          PointValue
 }
 
 type EntityRefValue struct {
 	EntityIid string `json:"entityIid"`
 	LevelIid  string `json:"levelIid"`
+}
+
+type PointValue struct {
+	X, Y float64
 }
 
 // They call me the programming wizard
@@ -107,6 +113,23 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 		} else {
 			biome := result["__value"].(string)
 			f.Biome = biome
+		}
+	case FieldTypePoint:
+		point := result["__value"]
+		if point == nil {
+			f.Point = PointValue{
+				X: 0,
+				Y: 0,
+			}
+			return nil
+		}
+		pointMap, ok := point.(map[string]any)
+		if !ok {
+			return errors.New("could not cast [\"__value\"] to map[string]any")
+		}
+		f.Point = PointValue{
+			X: pointMap["cx"].(float64),
+			Y: pointMap["cy"].(float64),
 		}
 	}
 	return nil

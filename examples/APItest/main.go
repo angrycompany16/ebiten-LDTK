@@ -22,31 +22,36 @@ func main() {
 			if entity.Name == "EntityRefArrayTest" {
 				testFields(entity, level)
 			}
+
+			if entity.Name == "EntityFieldsTest" {
+				field, _ := entity.GetFieldByName("Point")
+				fmt.Println(field.Point)
+			}
 		}
 	}
 
 	// Test int grid value
-	var ignoreValue int
-	for _, layerDef := range world.Defs.LayerDefs {
-		if layerDef.Name != "IntGrid_with_rules" {
-			continue
-		}
+	// var ignoreValue int
+	// for _, layerDef := range world.Defs.LayerDefs {
+	// 	if layerDef.Name != "IntGrid_with_rules" {
+	// 		continue
+	// 	}
 
-		ignoreValue = layerDef.GetIntGridValue("walls")
-	}
+	// 	ignoreValue = layerDef.GetIntGridValue("walls")
+	// }
 
-	var intGridCSV [][]int
-	for _, layer := range level.Layers {
-		if layer.Name != "IntGrid_with_rules" {
-			continue
-		}
+	// var intGridCSV [][]int
+	// for _, layer := range level.Layers {
+	// 	if layer.Name != "IntGrid_with_rules" {
+	// 		continue
+	// 	}
 
-		intGridCSV = layer.ExtractLayerCSV([]int{ignoreValue})
-	}
+	// 	intGridCSV = layer.ExtractLayerCSV([]int{ignoreValue})
+	// }
 
-	for i := range intGridCSV {
-		fmt.Println(intGridCSV[i])
-	}
+	// for i := range intGridCSV {
+	// 	fmt.Println(intGridCSV[i])
+	// }
 }
 
 func testFields(entity ebitenLDTK.Entity, level ebitenLDTK.Level) {
