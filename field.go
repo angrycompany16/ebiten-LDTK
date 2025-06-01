@@ -15,6 +15,7 @@ const (
 	FieldTypeEntityRef      = "EntityRef"
 	FieldTypeEntityRefArray = "Array<EntityRef>"
 	FieldTypeFloat          = "Float"
+	FieldTypeString         = "String"
 	FieldTypeBiome          = "LocalEnum.Biome"
 	FieldTypePoint          = "Point"
 )
@@ -25,6 +26,7 @@ type Field struct {
 	EntityRef      EntityRefValue
 	EntityRefArray []EntityRefValue
 	Float          float64
+	String         string
 	Biome          string
 	Point          PointValue
 }
@@ -65,6 +67,12 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 			return errors.New("could not cast [\"__value\"] to float64")
 		}
 		f.Float = float
+	case FieldTypeString:
+		string, ok := result["__value"].(string)
+		if !ok {
+			return errors.New("could not cast [\"__value\"] to string")
+		}
+		f.String = string
 	case FieldTypeEntityRef:
 		entityRefValue := EntityRefValue{}
 		entityRef, ok := result["__value"].(map[string]any)

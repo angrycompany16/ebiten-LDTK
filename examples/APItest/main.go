@@ -26,6 +26,8 @@ func main() {
 			if entity.Name == "EntityFieldsTest" {
 				field, _ := entity.GetFieldByName("Point")
 				fmt.Println(field.Point)
+				field, _ = entity.GetFieldByName("String_singleLine")
+				fmt.Println(field.String)
 			}
 		}
 	}
