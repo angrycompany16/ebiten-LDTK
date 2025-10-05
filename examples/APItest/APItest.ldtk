@@ -1816,15 +1816,7 @@
 							"height": 16,
 							"defUid": 46,
 							"px": [264,472],
-							"fieldInstances": [{ "__identifier": "target", "__type": "EntityRef", "__value": {
-								"entityIid": "d0e23330-66b0-11ec-895f-e701a663b232",
-								"layerIid": "a3030e77-66b0-11ec-9cd7-0b0cf743a68c",
-								"levelIid": "a3030e70-66b0-11ec-9cd7-3fe74f53b9c3",
-								"worldIid": "c9b00130-c640-11ed-ad34-57d0f1a6d3a2"
-							}, "__tile": null, "defUid": 47, "realEditorValues": [{
-								"id": "V_String",
-								"params": ["d0e23330-66b0-11ec-895f-e701a663b232"]
-							}] }]
+							"fieldInstances": [{ "__identifier": "target", "__type": "EntityRef", "__value": null, "__tile": null, "defUid": 47, "realEditorValues": [null] }]
 						},
 						{
 							"__identifier": "EntityRefTest",

@@ -75,6 +75,10 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 		f.String = string
 	case FieldTypeEntityRef:
 		entityRefValue := EntityRefValue{}
+		if result["__value"] == nil {
+			f.EntityRef = entityRefValue
+			return nil
+		}
 		entityRef, ok := result["__value"].(map[string]any)
 		if !ok {
 			return errors.New("could not cast result[\"__value\"] to map[string]any")

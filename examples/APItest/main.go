@@ -29,6 +29,23 @@ func main() {
 				field, _ = entity.GetFieldByName("String_singleLine")
 				fmt.Println(field.String)
 			}
+
+			if entity.Name == "EntityRefTest" {
+				entityField, err := entity.GetFieldByName("target")
+				if err != nil {
+					panic(err)
+				}
+
+				if entityField.EntityRef.EntityIid == "" {
+					fmt.Println("I have no entity ref, skipping...")
+					continue
+				}
+				entity, err := level.GetEntityByIid(entityField.EntityRef.EntityIid)
+				if err != nil {
+					panic(err)
+				}
+				fmt.Println("This is my friend", entity.Name)
+			}
 		}
 	}
 
@@ -54,6 +71,7 @@ func main() {
 	// for i := range intGridCSV {
 	// 	fmt.Println(intGridCSV[i])
 	// }
+	fmt.Println("All tests passed successfully :)")
 }
 
 func testFields(entity ebitenLDTK.Entity, level ebitenLDTK.Level) {
