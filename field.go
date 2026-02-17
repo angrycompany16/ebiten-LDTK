@@ -18,6 +18,7 @@ const (
 	FieldTypeString         = "String"
 	FieldTypeBiome          = "LocalEnum.Biome"
 	FieldTypePoint          = "Point"
+	FieldTypeBool           = "Bool"
 )
 
 type Field struct {
@@ -29,6 +30,7 @@ type Field struct {
 	String         string
 	Biome          string
 	Point          PointValue
+	Bool           bool
 }
 
 type EntityRefValue struct {
@@ -143,6 +145,12 @@ func (f *Field) UnmarshalJSON(data []byte) error {
 			X: pointMap["cx"].(float64),
 			Y: pointMap["cy"].(float64),
 		}
+	case FieldTypeBool:
+		boolVal, ok := result["__value"].(bool)
+		if !ok {
+			return errors.New("could not cast [\"__value\"] to bool")
+		}
+		f.Bool = boolVal
 	}
 	return nil
 }
