@@ -25,9 +25,9 @@ func main() {
 
 			if entity.Name == "EntityFieldsTest" {
 				field, _ := entity.GetFieldByName("Point")
-				fmt.Println(field.Point)
+				fmt.Println(ebitenLDTK.GetSingleValue[ebitenLDTK.Point](field))
 				field, _ = entity.GetFieldByName("String_singleLine")
-				fmt.Println(field.String)
+				fmt.Println(ebitenLDTK.GetSingleValue[string](field))
 			}
 
 			if entity.Name == "EntityRefTest" {
@@ -36,17 +36,24 @@ func main() {
 					panic(err)
 				}
 
-				if entityField.EntityRef.EntityIid == "" {
+				entityRef := ebitenLDTK.GetSingleValue[ebitenLDTK.EntityRef](entityField)
+				if entityRef.EntityIid == "" {
 					fmt.Println("I have no entity ref, skipping...")
 					continue
 				}
-				entity, err := level.GetEntityByIid(entityField.EntityRef.EntityIid)
+				entity, err := level.GetEntityByIid(entityRef.EntityIid)
 				if err != nil {
 					panic(err)
 				}
 				fmt.Println("This is my friend", entity.Name)
 			}
 		}
+	}
+
+	// Test enum
+	_, err = world.Defs.GetEnum("SomeEnum")
+	if err != nil {
+		panic(err)
 	}
 
 	// Test int grid value
@@ -79,7 +86,8 @@ func testFields(entity ebitenLDTK.Entity, level ebitenLDTK.Level) {
 	if err != nil {
 		panic(err)
 	}
-	for _, entityRef := range entityField.EntityRefArray {
+	entityRefArray := ebitenLDTK.GetArray[ebitenLDTK.EntityRef](entityField)
+	for _, entityRef := range entityRefArray {
 		fmt.Printf("I am entity %s, this is my friend entity %s\n", entity.Iid, entityRef.EntityIid)
 	}
 
@@ -87,5 +95,5 @@ func testFields(entity ebitenLDTK.Entity, level ebitenLDTK.Level) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("This level is in biome", levelField.Biome)
+	fmt.Println("This level is in biome", ebitenLDTK.GetSingleValue[ebitenLDTK.Enum](levelField))
 }
