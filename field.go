@@ -97,13 +97,14 @@ type TileFieldValue struct {
 	H          float64
 }
 
-func GetSingleValue[T any](f Field) T {
+// Gets the field value for fields of type Single
+func As[T any](f Field) T {
 	var zero T
 	if f.value == nil {
 		return zero
 	}
 	if f.isArray {
-		fmt.Println("The field represents an array. Please is GetArray instead.")
+		fmt.Println("The field represents an array. Please is AsArray instead.")
 		return zero
 	}
 
@@ -115,9 +116,10 @@ func GetSingleValue[T any](f Field) T {
 	return zero
 }
 
-func GetArray[T any](f Field) []T {
+// Gets the value of fields of type array
+func AsArray[T any](f Field) []T {
 	if !f.isArray {
-		fmt.Println("The field does not represent an array. Please is GetSingleValue instead.")
+		fmt.Println("The field does not represent an array. Please use As instead.")
 		return make([]T, 0)
 	}
 	valueSlice := f.value.([]any)

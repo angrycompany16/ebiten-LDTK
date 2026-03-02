@@ -41,6 +41,6 @@ func main() {
 		}
 		field, _ := entity.GetFieldByName(fieldNames[11])
 		// Nice. Looks like everything works
-		fmt.Println(ebitenLDTK.GetArray[ebitenLDTK.Point](field))
+		fmt.Println(ebitenLDTK.AsArray[ebitenLDTK.Point](field))
 	}
 }
