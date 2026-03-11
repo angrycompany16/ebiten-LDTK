@@ -3,6 +3,7 @@ package ebitenLDTK
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -11,6 +12,15 @@ type World struct {
 	GridHeight int     `json:"worldGridHeight"`
 	Defs       Defs    `json:"defs"`
 	Levels     []Level `json:"levels"`
+}
+
+func LoadFromStream(r io.Reader) (World, error) {
+	world := World{}
+	err := json.NewDecoder(r).Decode(&world)
+	if err != nil {
+		return world, err
+	}
+	return world, nil
 }
 
 func LoadWorld(path string) (World, error) {
